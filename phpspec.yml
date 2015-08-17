@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: 3rdSense\Generators
+        psr4_prefix: 3rdSense\Generators
+        src_path: src

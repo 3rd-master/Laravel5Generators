@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Repositories;
+
+use {{entity-namespace}}\{{entity-name}};
+
+/**
+ * Class {{name}}Repository
+ * @package App\Repositories
+ */
+class {{name}} implements {{name}}Interface
+{
+    /**
+     * Retrieve all {{entity-name}}.
+     *
+     * @return mixed
+     */
+    public function all()
+    {
+        return {{entity-name}}::all();
+    }
+
+    /**
+     * Retrieve a paginated list of {{entity-name}}.
+     *
+     * @param $limit
+     */
+    public function paginated($limit)
+    {
+        return {{entity-name}}::paginate($limit);
+    }
+
+    /**
+     * Retrieve a single {{entity-name}} by ID.
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function find($id)
+    {
+        return {{entity-name}}::find($id);
+    }
+
+    /**
+     * Create and save a new {{entity-name}}.
+     *
+     * @param $data
+     *
+     * @return bool
+     */
+    public function create($data)
+    {
+        $entity = new {{entity-name}};
+
+        return $this->save($entity, $data);
+    }
+
+    /**
+     * Update an existing {{entity-name}}.
+     *
+     * @param $id
+     * @param $data
+     *
+     * @return {{entity-name}}
+     *
+     */
+    public function update($id, $data)
+    {
+        $entity = $this->findById($id);
+
+        return $this->save($entity, $data);
+    }
+
+    /**
+     * Remove/delete exiting {{entity-name}}
+     *
+     * @param $id
+     *
+     * @return int
+     */
+    public function destroy($id)
+    {
+        return {{entity-name}}::destroy($id);
+    }
+
+    /**
+     * Save the {{entity-name}}.
+     *
+     * @param $entity
+     * @param $data
+     *
+     * @return boolean
+     */
+    protected function save($entity, $data)
+    {
+        // set model properties
+
+        return $entity->save();
+    }
+}
