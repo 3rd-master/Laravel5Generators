@@ -12,7 +12,7 @@ These include:
 ### Step 1: Install using `composer`
 
 ```
-composer require thirdsense/generators --dev
+composer require 3rd-sense/generators --dev
 ```
 
 ### Step 2: Add the service provider
