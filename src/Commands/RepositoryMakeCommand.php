@@ -27,7 +27,7 @@ class RepositoryMakeCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new repository class and interface.';
+    protected $description = 'Create a new repository class and interface';
 
     /**
      * The filesystem instance.
@@ -37,13 +37,6 @@ class RepositoryMakeCommand extends Command
     protected $files;
 
     /**
-     * Meta information for the requested migration.
-     *
-     * @var array
-     */
-    protected $meta;
-
-    /**
      * @var array|string
      */
     protected $className;
@@ -51,7 +44,7 @@ class RepositoryMakeCommand extends Command
     /**
      * @var
      */
-    protected $extractNamespace;
+    protected $entityNamespace;
 
     /**
      * @var mixed
@@ -68,10 +61,6 @@ class RepositoryMakeCommand extends Command
         parent::__construct();
 
         $this->files = $files;
-
-        $this->className       = $this->argument('name');
-        $this->entityName      = $this->extractName($this->argument('entity'));
-        $this->entityNamespace = $this->extractNamespace($this->argument('entity'));
     }
 
     /**
@@ -81,6 +70,10 @@ class RepositoryMakeCommand extends Command
      */
     public function fire()
     {
+        $this->className       = $this->argument('name');
+        $this->entityName      = $this->extractName($this->argument('entity'));
+        $this->entityNamespace = $this->extractNamespace($this->argument('entity'));
+
         $this->makeRepositoryInterface();
         $this->makeRepository();
     }
@@ -154,6 +147,7 @@ class RepositoryMakeCommand extends Command
     {
         $stub = $this->files->get(__DIR__ . '/../stubs/repository.stub');
         $this
+            ->replaceAppNamespace($stub)
             ->replaceClassName($stub)
             ->replaceEntityName($stub);
 
@@ -169,10 +163,25 @@ class RepositoryMakeCommand extends Command
     {
         $stub = $this->files->get(__DIR__ . '/../stubs/repository-interface.stub');
         $this
+            ->replaceAppNamespace($stub)
             ->replaceClassName($stub)
             ->replaceEntityName($stub);
 
         return $stub;
+    }
+
+    /**
+     * Replace the class name in the stub.
+     *
+     * @param  string $stub
+     *
+     * @return $this
+     */
+    protected function replaceAppNamespace(&$stub)
+    {
+        $stub = str_replace('{{app-namespace}}', $this->getAppNamespace(), $stub);
+
+        return $this;
     }
 
     /**
@@ -213,7 +222,7 @@ class RepositoryMakeCommand extends Command
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the repository'],
-            ['name', InputArgument::REQUIRED, 'The name of the associated entity'],
+            ['entity', InputArgument::REQUIRED, 'The name of the associated entity'],
         ];
     }
 
@@ -253,7 +262,10 @@ class RepositoryMakeCommand extends Command
     {
         $parts = $this->classParts($argument);
 
-        return implode("\\", array_pop($parts));
+        // remove the classname
+        array_pop($parts);
+
+        return implode('\\', $parts);
     }
 
     /**

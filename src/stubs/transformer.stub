@@ -1,0 +1,48 @@
+<?php
+
+namespace {{app-namespace}}Transformers;
+
+{{entity-use-statement}}
+use League\Fractal\TransformerAbstract;
+
+class {{name}} extends TransformerAbstract
+{
+    /**
+     * List of resources to possibly include
+     *
+     * @var  array
+     */
+    protected $availableIncludes = [];
+
+    /**
+     * List of resources to automatically include
+     *
+     * @var  array
+     */
+    protected $defaultIncludes = [];
+
+    /**
+     * @param {{entity-name}}{{entity-variable}}
+     *
+     * @return array
+     */
+    public function transform({{entity-name}}{{entity-variable}})
+    {
+        return [
+            'id'    => {{entity-variable}}->id,
+
+            // TODO: transform entity properties
+
+            'links' => [
+                [
+                    'rel' => 'self',
+                    'uri' => route('{{entity-base-route}}.show', ['id' => {{entity-variable}}->id]),
+                ],
+                [
+                    'rel' => 'list',
+                    'uri' => route('{{entity-base-route}}.index'),
+                ],
+            ],
+        ];
+    }
+}
