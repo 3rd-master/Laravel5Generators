@@ -66,7 +66,7 @@ class {{name}} implements {{name}}Interface
      */
     public function update($id, $data)
     {
-        $entity = $this->findById($id);
+        $entity = $this->find($id);
 
         return $this->save($entity, $data);
     }
