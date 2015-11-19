@@ -1,6 +1,6 @@
 <?php
 
-namespace ThirdSense\Generators;
+namespace ThirdSense\Generators\Commands;
 use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;

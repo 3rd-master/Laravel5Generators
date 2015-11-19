@@ -7,6 +7,17 @@ These include:
 - make:repository
 - make:transformer 
 
+Replicated make commands from official repository Illuminate\Foundation for use in Lumen
+
+- make:command
+- make:console
+- make:event
+- make:job
+- make:listener
+- make:model
+- make:provider
+- make:test
+
 ## Usage
 
 ### Step 1: Install using `composer`

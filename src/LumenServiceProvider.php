@@ -3,7 +3,15 @@
 namespace ThirdSense\Generators;
 
 use Illuminate\Support\ServiceProvider;
+use ThirdSense\Generators\Commands\CommandMakeCommand;
+use ThirdSense\Generators\Commands\ConsoleMakeCommand;
+use ThirdSense\Generators\Commands\EventMakeCommand;
+use ThirdSense\Generators\Commands\JobMakeCommand;
+use ThirdSense\Generators\Commands\ListenerMakeCommand;
+use ThirdSense\Generators\Commands\ModelMakeCommand;
+use ThirdSense\Generators\Commands\ProviderMakeCommand;
 use ThirdSense\Generators\Commands\RepositoryMakeCommand;
+use ThirdSense\Generators\Commands\TestMakeCommand;
 use ThirdSense\Generators\Commands\TransformerMakeCommand;
 
 /**
