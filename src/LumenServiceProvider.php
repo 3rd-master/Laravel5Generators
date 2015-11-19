@@ -10,7 +10,7 @@ use ThirdSense\Generators\Commands\TransformerMakeCommand;
  * Class GeneratorsServiceProvider
  * @package ThirdSense\Generators
  */
-class GeneratorsServiceProvider extends ServiceProvider
+class LumenServiceProvider extends ServiceProvider
 {
     /**
      * Register the service provider.
