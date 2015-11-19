@@ -29,12 +29,22 @@ composer require 3rd-sense/generators --dev
 ### Step 2: Add the service provider
 Following Jeffery's advice these should only be available in your local development environment, so you don't want to update the production `providers` array in `config/app.php`. Instead, add the provider in `app/Providers/AppServiceProvider.php`, like so:
 
+#### For Laravel `config/app.php`
+
 ```php
 public function register()
 {
     if ($this->app->environment() == 'local') {
-        $this->app->register('ThirdSense\Generators\GeneratorsServiceProvider');
+        $this->app->register('ThirdSense\Generators\LaravelServiceProvider');
     }
+}
+```
+
+#### For Lumen `bootstrap/app.php`
+
+```php
+if ($app->environment() === 'local') {
+    $app->register(\ThirdSense\Generators\LumenServiceProvider::class);
 }
 ```
 
@@ -45,6 +55,8 @@ You're all set. Run `php artisan` from the console, and you'll see the new comma
 
 - [Generate Repository Classes](#generate-repository-classes)
 - [Generate Transformer Classes](#generate-transformer-classes)
+
+For all other commands refer to the official [Laravel documentation](http://laravel.com/docs)
 
 ### Generate Repository Classes
 ```
