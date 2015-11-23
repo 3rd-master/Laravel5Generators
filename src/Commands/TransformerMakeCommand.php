@@ -121,7 +121,7 @@ class TransformerMakeCommand extends Command
      */
     protected function compileTransformerStub()
     {
-        $stub = $this->files->get(__DIR__ . '/../stubs/transformer.stub');
+        $stub = $this->files->get(__DIR__ . '/stubs/transformer.stub');
         $this
             ->replaceAppNamespace($stub)
             ->replaceClassName($stub)

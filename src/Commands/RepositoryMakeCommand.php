@@ -145,7 +145,7 @@ class RepositoryMakeCommand extends Command
      */
     protected function compileRepositoryStub()
     {
-        $stub = $this->files->get(__DIR__ . '/../stubs/repository.stub');
+        $stub = $this->files->get(__DIR__ . '/stubs/repository.stub');
         $this
             ->replaceAppNamespace($stub)
             ->replaceClassName($stub)
@@ -161,7 +161,7 @@ class RepositoryMakeCommand extends Command
      */
     protected function compileInterfaceStub()
     {
-        $stub = $this->files->get(__DIR__ . '/../stubs/repository-interface.stub');
+        $stub = $this->files->get(__DIR__ . '/stubs/repository-interface.stub');
         $this
             ->replaceAppNamespace($stub)
             ->replaceClassName($stub)
